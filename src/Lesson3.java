@@ -6,7 +6,8 @@ import java.util.concurrent.TimeUnit;
 
 /*
     TYPES OF POOLS
-
+    SHUTTING DOWN A SERVICE EXECUTOR
+---------------------------------------------------------------------------------------------------
     Java provides 4 types of thread pools :
         1. FixedThreadPool
         2. CachedThreadPool :
@@ -25,7 +26,7 @@ import java.util.concurrent.TimeUnit;
             - same as fixed thread pool with size 1.
 
 
-     SHUTTING DOWN A SERVICE EXECUTOR
+
  */
 public class Lesson3 {
 
