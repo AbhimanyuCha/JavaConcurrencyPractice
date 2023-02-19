@@ -67,7 +67,7 @@ public class Lesson1 {
      */
 
     static volatile int count = 0;
-    static void increment(int val){
+    synchronized static void increment(int val){
         count += val;
     }
     static void synchroDemo() throws InterruptedException {
