@@ -59,7 +59,7 @@
 
 import java.util.concurrent.*;
 
-public class Lesson5 {
+public class CompletableFutureBasics {
     static final class Order{
         int order_id;
         int request_id;

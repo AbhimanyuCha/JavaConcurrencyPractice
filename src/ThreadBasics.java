@@ -9,7 +9,7 @@ we will cover 3 things :
  */
 
 
-public class Lesson1 {
+public class ThreadBasics {
 
     //How to create a thread ?
     /*

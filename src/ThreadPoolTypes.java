@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit;
 
 
  */
-public class Lesson3 {
+public class ThreadPoolTypes {
 
     static class SomeTask implements Runnable{
         @Override

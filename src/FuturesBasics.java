@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
-public class Lesson4 {
+public class FuturesBasics {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException, TimeoutException {
         ExecutorService executorService = Executors.newFixedThreadPool(10);
