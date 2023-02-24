@@ -34,7 +34,6 @@
 
      The queue which holds the task should be thread safe and hence it is called as a blocking queue.
 
-
      Ideal pool size ?
         - Depends on the type of task you want to execute.
         - Lets say if its CPU intensive task then, and if you have a large number of threads then it will do a time split
