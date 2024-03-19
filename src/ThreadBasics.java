@@ -71,18 +71,8 @@ public class ThreadBasics {
         count += val;
     }
     static void synchroDemo() throws InterruptedException {
-        Thread t1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                increment(1);
-            }
-        });
-        Thread t2 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                increment(2);
-            }
-        });
+        Thread t1 = new Thread(() -> increment(1));
+        Thread t2 = new Thread(() -> increment(2));
 
         t1.start();
         t2.start();

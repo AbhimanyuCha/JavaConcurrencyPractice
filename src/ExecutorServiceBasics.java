@@ -4,8 +4,6 @@
 ----------------------------------------------------------------------------------------
 
     - Java Thread Pool Framework.
-
-
     - 1 java thread corresponds to 1 OS thread.
 
     lets create a task :

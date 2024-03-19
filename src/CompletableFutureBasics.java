@@ -119,16 +119,17 @@ public class CompletableFutureBasics {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
 
         for(int requestId = 0 ; requestId <= 100 ; requestId++){
             ExecutorService cpuBound = Executors.newFixedThreadPool(4);
             ExecutorService ioBound = Executors.newCachedThreadPool();
-            CompletableFuture.supplyAsync(() -> new GetOrderTask(), ioBound)
+            var c = CompletableFuture.supplyAsync(() -> new GetOrderTask(), ioBound)
                     .thenApplyAsync(order -> new EnrichOrderTask(order), cpuBound)
                     .thenApplyAsync((order) -> new PaymentTask(order), cpuBound)
                     .thenApplyAsync((order) -> new DispatchTask(), ioBound)
                     .thenAccept((order)-> new SendMailTask(order));
+            c.get();
         }
     }
 
