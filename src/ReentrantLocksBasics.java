@@ -1,6 +1,7 @@
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class ReentrantLocksBasics {
     private static Lock lock = new ReentrantLock();
@@ -58,5 +59,36 @@ public class ReentrantLocksBasics {
                 - getQueueLength() : tells the queue length waiting to access the lock.
                 - newCondition
      */
+
+
+    /**
+     * READ WRITE LOCKS
+
+     - multiple threads can acquire the read lock and only a single thread can acquire the write lock
+     - either read lock is being used (by n threads) or a write lock is being used (by 1 thread)
+     */
+    static ReentrantReadWriteLock reentrantReadWriteLock = new ReentrantReadWriteLock();
+    static ReentrantReadWriteLock.ReadLock readLock = reentrantReadWriteLock.readLock();
+    static ReentrantReadWriteLock.WriteLock writeLock = reentrantReadWriteLock.writeLock();
+
+    static class MyTask implements Runnable{
+
+        @Override
+        public void run() {
+            readLock.lock();
+            System.out.println("Accessing resource");
+            readLock.unlock();
+        }
+    }
+
+    public static void main(String[] args) {
+        MyTask task = new MyTask();
+        Thread t1 = new Thread(task);
+        Thread t2 = new Thread(task);
+        Thread t3 = new Thread(task);
+        t1.start();
+        t2.start();
+        t3.start();
+    }
 
 }
