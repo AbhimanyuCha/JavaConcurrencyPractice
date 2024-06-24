@@ -29,7 +29,9 @@ public class ThreadBasics {
 
     //Visibility Problem :
     /*
-        - using volatile keyword avoids visibility problem.
+        - using volatile keyword avoids visibility problem, but still it doesn't ensure atomicity.
+        - still it may happen when a thread writes to a variable and other threads read the same variable.
+        - so, volatile keyword is used when we want to ensure visibility of a variable across multiple threads , but does not want to guarantee atomicity.
      */
     static volatile boolean flag = true; // volatile can only be used with variables in the heap, not in stack memory.
     public static void visibilityDemo(){

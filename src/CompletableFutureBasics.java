@@ -124,6 +124,8 @@ public class CompletableFutureBasics {
         for(int requestId = 0 ; requestId <= 100 ; requestId++){
             ExecutorService cpuBound = Executors.newFixedThreadPool(4);
             ExecutorService ioBound = Executors.newCachedThreadPool();
+            CompletableFuture<GetOrderTask> f = CompletableFuture.supplyAsync(() -> new GetOrderTask(), ioBound);
+            f.get();
             var c = CompletableFuture.supplyAsync(() -> new GetOrderTask(), ioBound)
                     .thenApplyAsync(order -> new EnrichOrderTask(order), cpuBound)
                     .thenApplyAsync((order) -> new PaymentTask(order), cpuBound)
